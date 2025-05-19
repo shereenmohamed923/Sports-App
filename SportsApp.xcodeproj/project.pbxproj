@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		224972122DDB76D200003E83 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224972102DDB76D200003E83 /* SplashViewController.swift */; };
 		224972132DDB76D200003E83 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224972112DDB76D200003E83 /* SplashViewController.xib */; };
+		228124442DDB7F99005A16CF /* FootballFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281243D2DDB7F99005A16CF /* FootballFactory.swift */; };
+		228124452DDB7F99005A16CF /* CricketFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281243E2DDB7F99005A16CF /* CricketFactory.swift */; };
+		228124462DDB7F99005A16CF /* TennisFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281243F2DDB7F99005A16CF /* TennisFactory.swift */; };
+		228124472DDB7F99005A16CF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228124402DDB7F99005A16CF /* NetworkService.swift */; };
+		228124482DDB7F99005A16CF /* SportsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228124412DDB7F99005A16CF /* SportsEnums.swift */; };
+		228124492DDB7F99005A16CF /* BasketballFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228124422DDB7F99005A16CF /* BasketballFactory.swift */; };
+		2281244A2DDB7F99005A16CF /* SportFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228124432DDB7F99005A16CF /* SportFactory.swift */; };
+		2281244D2DDB7FB3005A16CF /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 2281244B2DDB7FB3005A16CF /* Models */; };
+		2281244E2DDB7FB3005A16CF /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281244C2DDB7FB3005A16CF /* Presenter.swift */; };
+		228124502DDB7FC6005A16CF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2281244F2DDB7FC6005A16CF /* .gitignore */; };
 		2281F5272DDA9343000BF19E /* LeaguesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F5252DDA9342000BF19E /* LeaguesTableViewController.swift */; };
 		2281F52C2DDA9473000BF19E /* LeaguesTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F52B2DDA9473000BF19E /* LeaguesTable.swift */; };
 		2281F52E2DDA976A000BF19E /* LeaguesTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2281F52D2DDA976A000BF19E /* LeaguesTable.xib */; };
@@ -42,6 +52,17 @@
 /* Begin PBXFileReference section */
 		224972102DDB76D200003E83 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		224972112DDB76D200003E83 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		2281243D2DDB7F99005A16CF /* FootballFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FootballFactory.swift; path = "../../../Downloads/Sports-App-factory/SportsApp/FootballFactory.swift"; sourceTree = "<group>"; };
+		2281243E2DDB7F99005A16CF /* CricketFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CricketFactory.swift; path = "../../../Downloads/Sports-App-factory/SportsApp/CricketFactory.swift"; sourceTree = "<group>"; };
+		2281243F2DDB7F99005A16CF /* TennisFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TennisFactory.swift; path = "../../../Downloads/Sports-App-factory/SportsApp/TennisFactory.swift"; sourceTree = "<group>"; };
+		228124402DDB7F99005A16CF /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = "../../../Downloads/Sports-App-factory/SportsApp/NetworkService.swift"; sourceTree = "<group>"; };
+		228124412DDB7F99005A16CF /* SportsEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SportsEnums.swift; path = "../../../Downloads/Sports-App-factory/SportsApp/SportsEnums.swift"; sourceTree = "<group>"; };
+		228124422DDB7F99005A16CF /* BasketballFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasketballFactory.swift; path = "../../../Downloads/Sports-App-factory/SportsApp/BasketballFactory.swift"; sourceTree = "<group>"; };
+		228124432DDB7F99005A16CF /* SportFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SportFactory.swift; path = "../../../Downloads/Sports-App-factory/SportsApp/SportFactory.swift"; sourceTree = "<group>"; };
+		2281244B2DDB7FB3005A16CF /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Models; path = "../../../Downloads/Sports-App-factory/SportsApp/Models"; sourceTree = "<group>"; };
+		2281244C2DDB7FB3005A16CF /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Presenter.swift; path = "../../../Downloads/Sports-App-factory/SportsApp/Presenter.swift"; sourceTree = "<group>"; };
+		2281244F2DDB7FC6005A16CF /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = "../../../Downloads/Sports-App-factory/.gitignore"; sourceTree = "<group>"; };
+		228124512DDB7FC9005A16CF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2281F5252DDA9342000BF19E /* LeaguesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesTableViewController.swift; sourceTree = "<group>"; };
 		2281F52B2DDA9473000BF19E /* LeaguesTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesTable.swift; sourceTree = "<group>"; };
 		2281F52D2DDA976A000BF19E /* LeaguesTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaguesTable.xib; sourceTree = "<group>"; };
@@ -87,6 +108,7 @@
 		228B437C2DD60098006C9EB1 = {
 			isa = PBXGroup;
 			children = (
+				228124512DDB7FC9005A16CF /* .gitignore */,
 				228B43872DD60098006C9EB1 /* SportsApp */,
 				228B43A12DD6009B006C9EB1 /* SportsAppTests */,
 				228B43AB2DD6009B006C9EB1 /* SportsAppUITests */,
@@ -107,6 +129,16 @@
 		228B43872DD60098006C9EB1 /* SportsApp */ = {
 			isa = PBXGroup;
 			children = (
+				2281244F2DDB7FC6005A16CF /* .gitignore */,
+				2281244B2DDB7FB3005A16CF /* Models */,
+				2281244C2DDB7FB3005A16CF /* Presenter.swift */,
+				228124422DDB7F99005A16CF /* BasketballFactory.swift */,
+				2281243E2DDB7F99005A16CF /* CricketFactory.swift */,
+				2281243D2DDB7F99005A16CF /* FootballFactory.swift */,
+				228124402DDB7F99005A16CF /* NetworkService.swift */,
+				228124432DDB7F99005A16CF /* SportFactory.swift */,
+				228124412DDB7F99005A16CF /* SportsEnums.swift */,
+				2281243F2DDB7F99005A16CF /* TennisFactory.swift */,
 				228B43882DD60098006C9EB1 /* AppDelegate.swift */,
 				228B438A2DD60098006C9EB1 /* SceneDelegate.swift */,
 				228B438C2DD60098006C9EB1 /* ViewController.swift */,
@@ -243,8 +275,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				228124502DDB7FC6005A16CF /* .gitignore in Resources */,
 				228B43952DD6009A006C9EB1 /* Assets.xcassets in Resources */,
 				224972132DDB76D200003E83 /* SplashViewController.xib in Resources */,
+				2281244D2DDB7FB3005A16CF /* Models in Resources */,
 				2281F52E2DDA976A000BF19E /* LeaguesTable.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,10 +304,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				228124472DDB7F99005A16CF /* NetworkService.swift in Sources */,
 				228B438D2DD60098006C9EB1 /* ViewController.swift in Sources */,
+				228124452DDB7F99005A16CF /* CricketFactory.swift in Sources */,
 				2281F52C2DDA9473000BF19E /* LeaguesTable.swift in Sources */,
+				228124462DDB7F99005A16CF /* TennisFactory.swift in Sources */,
 				228B43892DD60098006C9EB1 /* AppDelegate.swift in Sources */,
+				228124442DDB7F99005A16CF /* FootballFactory.swift in Sources */,
+				2281244A2DDB7F99005A16CF /* SportFactory.swift in Sources */,
+				228124482DDB7F99005A16CF /* SportsEnums.swift in Sources */,
+				2281244E2DDB7FB3005A16CF /* Presenter.swift in Sources */,
 				228B43932DD60098006C9EB1 /* SportsApp.xcdatamodeld in Sources */,
+				228124492DDB7F99005A16CF /* BasketballFactory.swift in Sources */,
 				2281F5272DDA9343000BF19E /* LeaguesTableViewController.swift in Sources */,
 				224972122DDB76D200003E83 /* SplashViewController.swift in Sources */,
 				228B438B2DD60098006C9EB1 /* SceneDelegate.swift in Sources */,
