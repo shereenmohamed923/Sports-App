@@ -7,14 +7,25 @@
 
 import UIKit
 
-class LeaguesTable: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+class LeaguesTable: UITableView {
+        
+    @IBOutlet weak var LeaguesTableView: UITableView!
+    
+    override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: frame, style: style)
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        loadNibFile()
+    }
+    
+    func loadNibFile(){
+        Bundle.main.loadNibNamed("LeaguesTable", owner: self)
+        self.addSubview(LeaguesTableView)
+        LeaguesTableView.frame = self.bounds
+        LeaguesTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    }
+    
+    
 }
