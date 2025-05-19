@@ -18,7 +18,6 @@
 		2281244A2DDB7F99005A16CF /* SportFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228124432DDB7F99005A16CF /* SportFactory.swift */; };
 		2281244D2DDB7FB3005A16CF /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 2281244B2DDB7FB3005A16CF /* Models */; };
 		2281244E2DDB7FB3005A16CF /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281244C2DDB7FB3005A16CF /* Presenter.swift */; };
-		228124502DDB7FC6005A16CF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2281244F2DDB7FC6005A16CF /* .gitignore */; };
 		2281F5272DDA9343000BF19E /* LeaguesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F5252DDA9342000BF19E /* LeaguesTableViewController.swift */; };
 		2281F52C2DDA9473000BF19E /* LeaguesTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F52B2DDA9473000BF19E /* LeaguesTable.swift */; };
 		2281F52E2DDA976A000BF19E /* LeaguesTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2281F52D2DDA976A000BF19E /* LeaguesTable.xib */; };
@@ -61,7 +60,6 @@
 		228124432DDB7F99005A16CF /* SportFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SportFactory.swift; path = "../../../Downloads/Sports-App-factory/SportsApp/SportFactory.swift"; sourceTree = "<group>"; };
 		2281244B2DDB7FB3005A16CF /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Models; path = "../../../Downloads/Sports-App-factory/SportsApp/Models"; sourceTree = "<group>"; };
 		2281244C2DDB7FB3005A16CF /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Presenter.swift; path = "../../../Downloads/Sports-App-factory/SportsApp/Presenter.swift"; sourceTree = "<group>"; };
-		2281244F2DDB7FC6005A16CF /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = "../../../Downloads/Sports-App-factory/.gitignore"; sourceTree = "<group>"; };
 		228124512DDB7FC9005A16CF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2281F5252DDA9342000BF19E /* LeaguesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesTableViewController.swift; sourceTree = "<group>"; };
 		2281F52B2DDA9473000BF19E /* LeaguesTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesTable.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 		228B43872DD60098006C9EB1 /* SportsApp */ = {
 			isa = PBXGroup;
 			children = (
-				2281244F2DDB7FC6005A16CF /* .gitignore */,
 				2281244B2DDB7FB3005A16CF /* Models */,
 				2281244C2DDB7FB3005A16CF /* Presenter.swift */,
 				228124422DDB7F99005A16CF /* BasketballFactory.swift */,
@@ -275,7 +272,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				228124502DDB7FC6005A16CF /* .gitignore in Resources */,
 				228B43952DD6009A006C9EB1 /* Assets.xcassets in Resources */,
 				224972132DDB76D200003E83 /* SplashViewController.xib in Resources */,
 				2281244D2DDB7FB3005A16CF /* Models in Resources */,
