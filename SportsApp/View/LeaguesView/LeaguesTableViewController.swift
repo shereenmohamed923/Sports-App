@@ -6,17 +6,30 @@
 //
 
 import UIKit
+import SDWebImage
 
 class LeaguesTableViewController: UITableViewController {
+    
+    var leagues: [League] = []
+    var presenter: Presenter?
         
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "leaguesCell")
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        presenter = Presenter(leaguesVC: self)
+        presenter?.fetchLeagues(sport: .football, factory: FootballFactory())
+    }
+    
+    func reload(){
+        self.tableView.reloadData()
+    }
+    
+    func showError(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
     // MARK: - Table view data source
@@ -28,18 +41,22 @@ class LeaguesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return leagues.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "leaguesCell", for: indexPath) as! LeaguesTableViewCell
+        let league = leagues[indexPath.row]
         
-        cell.leageName.text = "name"
+        cell.leageName.text = league.name
+        if let imageUrl = league.img {
+            cell.leagueImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "league placeholder"))
+        } else {
+            cell.leagueImage.image = UIImage(named: "league placeholder")
+        }
         
-        
-        // Configure the cell...
-
         return cell
     }
     
