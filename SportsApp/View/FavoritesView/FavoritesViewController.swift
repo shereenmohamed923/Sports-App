@@ -1,5 +1,5 @@
 //
-//  SplashViewController.swift
+//  FavoritesViewController.swift
 //  SportsApp
 //
 //  Created by Macos on 19/05/2025.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SplashViewController: UIViewController {
+class FavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
