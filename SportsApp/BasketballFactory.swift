@@ -9,7 +9,7 @@ import Foundation
 
 class BasketballFactory:SportFactory{
     func createLeague(object: [String : Any]) -> League {
-        return League(key: object["league_key"] as? String, name: object["league_name"] as? String, img: nil)
+        return League(key: object["league_key"] as? Int, name: object["league_name"] as? String, img: nil)
     }
     
     func createFixture(object: [String : Any]) -> Fixture {
