@@ -8,25 +8,40 @@
 import UIKit
 import SDWebImage
 
-class LeaguesTableViewController: UITableViewController {
-    
-    var leagues: [League] = []
-    var presenter: Presenter?
+class LeaguesTableViewController: UITableViewController, DataHandling {
+    func getData(data: [String : Any]) {
+        if let leag = data["leagues"] as? [League] {
+            leagues=leag
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
+    }
+    
+    func showError(error: Error) {
+        DispatchQueue.main.async {
+            self.showError(message: error.localizedDescription)
+        }
+    }
+    
+    
+    private var leagues: [League] = []
+    var sport:Sport?
+    var factory:SportFactory?
+    private var presenter:Presenter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "leaguesCell")
         
-        presenter = Presenter(leaguesVC: self)
-        presenter?.fetchLeagues(sport: .cricket, factory: CricketFactory())
-        presenter?.fetchFixtures(sport: .tennis, factory: TennisFactory())
-        presenter?.fetchTeam(sport: .football, factory: FootballFactory())
-        presenter?.fetchPlayer(sport: .football, factory: FootballFactory())
+        presenter = Presenter(dataHandle: self)
+        presenter?.fetchLeagues(sport: sport!, factory: factory!)
     }
     
     func reload(){
-        self.tableView.reloadData()
+        
     }
     
     func showError(message: String) {
@@ -63,6 +78,13 @@ class LeaguesTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsVC=LeagueDetailsViewController(nibName: "LeagueDetailsViewController", bundle: nil)
+        detailsVC.factory=factory
+        detailsVC.sport=sport
+        detailsVC.leagueId = leagues[indexPath.row].key
+        navigationController?.pushViewController(detailsVC, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.

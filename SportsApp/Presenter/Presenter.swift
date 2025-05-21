@@ -10,86 +10,58 @@ import Foundation
 class Presenter{
     
     var network:NetworkService
-    var leaguesVC: LeaguesTableViewController?
+    var dataHandle: DataHandling
 
-    init(leaguesVC: LeaguesTableViewController) {
+    init(dataHandle: DataHandling) {
         self.network = NetworkService()
-        self.leaguesVC = leaguesVC
+        self.dataHandle = dataHandle
     }
     
-    func fetchLeagues(sport:Sport,factory:SportFactory){
-        network.fetchData(sport: sport, endpoint: .league,addOn: "&teamId=2616", completion: {data, error in
+    func fetchLeagues(sport:Sport, factory:SportFactory){
+        network.fetchData(sport: sport, endpoint: .league, completion: {data, error in
             var leagues=[League]()
             if let error=error{
-                DispatchQueue.main.async {
-                        self.leaguesVC?.showError(message: error.localizedDescription)
-                    }
-                    return
+                self.dataHandle.showError(error: error)
+                return
             }
             
             for i in data!{
-                 leagues.append(factory.createLeague(object: i))
-             }
-            
-            self.leaguesVC?.leagues = leagues
-            DispatchQueue.main.async {
-                self.leaguesVC?.reload()
+                leagues.append(factory.createLeague(object: i))
             }
+            let data=["leagues":leagues]
+            self.dataHandle.getData(data:data)
         })
     }
     
-    func fetchFixtures(sport:Sport,factory:SportFactory){
-        network.fetchData(sport: sport, endpoint: .fixture,addOn: "&from=\(DateManger.getPreviousWeekDate())&to=\(DateManger.getNextWeekDate())", completion: {data, error in
+    func fetchFixtures(sport:Sport, factory:SportFactory, addOn:String){
+        network.fetchData(sport: sport, endpoint: .fixture,addOn: "&from=\(DateManger.getPreviousWeekDate())&to=\(DateManger.getNextWeekDate())"+addOn, completion: {data, error in
             var fixtures=[Fixture]()
             if let error=error{
-//                DispatchQueue.main.async {
-//                        self.leaguesVC?.showError(message: error.localizedDescription)
-//                    }
+                self.dataHandle.showError(error: error)
                     return
             }
             
             for i in data!{
                 fixtures.append(factory.createFixture(object: i))
              }
-            
+            let data=["fixtures":fixtures]
+            self.dataHandle.getData(data:data)
         })
     }
     
-    //teamId should change to be dynamically handled
-    func fetchTeam(sport:Sport,factory:SportFactory){
-        network.fetchData(sport: sport, endpoint: .team,addOn: "&teamId=96", completion: {data, error in
+    func fetchTeam(sport:Sport, factory:SportFactory, addOn:String){
+        network.fetchData(sport: sport, endpoint: (sport == .tennis) ? .player : .team,addOn: addOn, completion: {data, error in
             var teams=[Team]()
             if let error=error{
-//                DispatchQueue.main.async {
-//                        self.leaguesVC?.showError(message: error.localizedDescription)
-//                    }
+                self.dataHandle.showError(error: error)
                     return
             }
             
             for i in data!{
                 teams.append(factory.createTeam(object: i))
              }
-            
-        })
-    }
-    
-    //playerId should change to be dynamically handled
-    func fetchPlayer(sport:Sport,factory:SportFactory){
-        network.fetchData(sport: sport, endpoint: .player,addOn: "&playerId=103051168", completion: {data, error in
-            var players=[Player]()
-            if let error=error{
-//                DispatchQueue.main.async {
-//                        self.leaguesVC?.showError(message: error.localizedDescription)
-//                    }
-                    return
-            }
-            
-            for i in data!{
-                players.append(factory.createPlayer(object: i))
-             }
-            for i in players{
-                print(i.name)
-            }
+            let data=["teams":teams]
+            self.dataHandle.getData(data:data)
         })
     }
     

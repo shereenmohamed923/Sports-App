@@ -38,6 +38,15 @@ class HomeViewController: UIViewController,UICollectionViewDataSource, UICollect
             return cell
         }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let favoritesVC = LeaguesTableViewController(nibName: "LeaguesTableViewController", bundle: nil)
+        let current=items[indexPath.row]
+        favoritesVC.factory=current.factory
+        favoritesVC.sport=current.sport
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.pushViewController(favoritesVC, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView,
                             layout collectionViewLayout: UICollectionViewLayout,
                             sizeForItemAt indexPath: IndexPath) -> CGSize {

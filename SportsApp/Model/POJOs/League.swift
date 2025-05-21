@@ -8,10 +8,10 @@
 import Foundation
 
 class League{
-    let key:String?
+    let key:Int?
     let name:String?
     let img:String?
-    init(key: String?, name: String?, img: String?) {
+    init(key: Int?, name: String?, img: String?) {
         self.key = key
         self.name = name
         self.img = img
