@@ -9,6 +9,13 @@ import UIKit
 
 class SportsViewController: UIViewController {
 
+    @IBAction func gotoLeagues(_ sender: Any) {
+        let leaguesVC = LeaguesTableViewController()
+
+        if let navigationController = self.navigationController {
+            navigationController.setViewControllers([leaguesVC], animated: true)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

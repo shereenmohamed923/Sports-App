@@ -1,28 +1,24 @@
 //
-//  LeaguesTableViewController.swift
+//  FavoritesViewController.swift
 //  SportsApp
 //
 //  Created by Macos on 19/05/2025.
 //
 
 import UIKit
-import SDWebImage
 
-class LeaguesTableViewController: UITableViewController {
-    
+class FavoritesTableViewController: UITableViewController {
+
     var leagues: [League] = []
-    var presenter: Presenter?
+    var favoritePresenter: FavoritePresenter?
         
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "leaguesCell")
         
-        presenter = Presenter(leaguesVC: self)
-        presenter?.fetchLeagues(sport: .cricket, factory: CricketFactory())
-        presenter?.fetchFixtures(sport: .tennis, factory: TennisFactory())
-        presenter?.fetchTeam(sport: .football, factory: FootballFactory())
-        presenter?.fetchPlayer(sport: .football, factory: FootballFactory())
+        favoritePresenter = FavoritePresenter(favoritesVC: self)
+        favoritePresenter?.fetchFavoriteLeagues()
     }
     
     func reload(){
@@ -53,42 +49,29 @@ class LeaguesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "leaguesCell", for: indexPath) as! LeaguesTableViewCell
-        let league = leagues[indexPath.row]
         
-        cell.leageName.text = league.name
-        if let imageUrl = league.img {
-            cell.leagueImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "league placeholder"))
-        } else {
-            cell.leagueImage.image = UIImage(named: "league placeholder")
+       let league = leagues[indexPath.row]
+       cell.leageName.text = league.name
+       if let imageUrl = league.img, let url = URL(string: imageUrl) {
+           cell.leagueImage.sd_setImage(with: url, placeholderImage: UIImage(named: "league placeholder"))
+       } else {
+           cell.leagueImage.image = UIImage(named: "league placeholder")
+       }
+       
+       return cell
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+                                forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                let leagueToDelete = leagues[indexPath.row]
+                if let key = leagueToDelete.key {
+                    favoritePresenter?.deleteLeagueFromFavorites(key: key)
+                }
+                leagues.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
         }
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.saveLeagueToFavorites(league: leagues[indexPath.row])
-    }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -114,5 +97,5 @@ class LeaguesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
+
 }

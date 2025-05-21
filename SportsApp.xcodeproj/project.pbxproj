@@ -13,8 +13,7 @@
 		224972132DDB76D200003E83 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224972112DDB76D200003E83 /* SplashViewController.xib */; };
 		224972162DDB9E5B00003E83 /* SportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224972142DDB9E5B00003E83 /* SportsViewController.swift */; };
 		224972172DDB9E5B00003E83 /* SportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224972152DDB9E5B00003E83 /* SportsViewController.xib */; };
-		2249721A2DDB9EA500003E83 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224972182DDB9EA500003E83 /* FavoritesViewController.swift */; };
-		2249721B2DDB9EA500003E83 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224972192DDB9EA500003E83 /* FavoritesViewController.xib */; };
+		2249721A2DDB9EA500003E83 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224972182DDB9EA500003E83 /* FavoritesTableViewController.swift */; };
 		2249721E2DDB9F3A00003E83 /* HomeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249721C2DDB9F3A00003E83 /* HomeTabBarViewController.swift */; };
 		2249721F2DDB9F3A00003E83 /* HomeTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2249721D2DDB9F3A00003E83 /* HomeTabBarViewController.xib */; };
 		224972222DDBA22D00003E83 /* LeaguesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224972202DDBA22D00003E83 /* LeaguesTableViewCell.swift */; };
@@ -43,6 +42,8 @@
 		22C7DB202DDB9A8500225FAB /* CricketFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7DB1F2DDB9A8500225FAB /* CricketFactory.swift */; };
 		22C7DB222DDB9AA600225FAB /* FootballFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7DB212DDB9AA500225FAB /* FootballFactory.swift */; };
 		22C7DB242DDB9ACD00225FAB /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7DB232DDB9ACD00225FAB /* Presenter.swift */; };
+		22E0977F2DDE36C5002C837F /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E0977E2DDE36C5002C837F /* FavoritePresenter.swift */; };
+		22E097812DDE4129002C837F /* LeaguesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E097802DDE4129002C837F /* LeaguesDAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +70,7 @@
 		224972112DDB76D200003E83 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		224972142DDB9E5B00003E83 /* SportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewController.swift; sourceTree = "<group>"; };
 		224972152DDB9E5B00003E83 /* SportsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SportsViewController.xib; sourceTree = "<group>"; };
-		224972182DDB9EA500003E83 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		224972192DDB9EA500003E83 /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
+		224972182DDB9EA500003E83 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		2249721C2DDB9F3A00003E83 /* HomeTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarViewController.swift; sourceTree = "<group>"; };
 		2249721D2DDB9F3A00003E83 /* HomeTabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTabBarViewController.xib; sourceTree = "<group>"; };
 		224972202DDBA22D00003E83 /* LeaguesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesTableViewCell.swift; sourceTree = "<group>"; };
@@ -101,6 +101,8 @@
 		22C7DB1F2DDB9A8500225FAB /* CricketFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CricketFactory.swift; sourceTree = "<group>"; };
 		22C7DB212DDB9AA500225FAB /* FootballFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballFactory.swift; sourceTree = "<group>"; };
 		22C7DB232DDB9ACD00225FAB /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		22E0977E2DDE36C5002C837F /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
+		22E097802DDE4129002C837F /* LeaguesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				22C7DB232DDB9ACD00225FAB /* Presenter.swift */,
+				22E0977E2DDE36C5002C837F /* FavoritePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -182,8 +185,7 @@
 		223C51EE2DDCDDF100E4E7CE /* FavoritesView */ = {
 			isa = PBXGroup;
 			children = (
-				224972192DDB9EA500003E83 /* FavoritesViewController.xib */,
-				224972182DDB9EA500003E83 /* FavoritesViewController.swift */,
+				224972182DDB9EA500003E83 /* FavoritesTableViewController.swift */,
 			);
 			path = FavoritesView;
 			sourceTree = "<group>";
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				223C51F62DDD190E00E4E7CE /* CoreDataManager.swift */,
+				22E097802DDE4129002C837F /* LeaguesDAO.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -420,7 +423,6 @@
 				2249721F2DDB9F3A00003E83 /* HomeTabBarViewController.xib in Resources */,
 				224972132DDB76D200003E83 /* SplashViewController.xib in Resources */,
 				224972252DDBA78900003E83 /* Assets.xcassets in Resources */,
-				2249721B2DDB9EA500003E83 /* FavoritesViewController.xib in Resources */,
 				224972292DDBB46400003E83 /* LeaguesTableViewController.xib in Resources */,
 				224972172DDB9E5B00003E83 /* SportsViewController.xib in Resources */,
 			);
@@ -448,7 +450,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C7DB142DDB99C000225FAB /* Team.swift in Sources */,
-				2249721A2DDB9EA500003E83 /* FavoritesViewController.swift in Sources */,
+				22E097812DDE4129002C837F /* LeaguesDAO.swift in Sources */,
+				2249721A2DDB9EA500003E83 /* FavoritesTableViewController.swift in Sources */,
+				22E0977F2DDE36C5002C837F /* FavoritePresenter.swift in Sources */,
 				223C51F42DDCE36500E4E7CE /* DateUtility.swift in Sources */,
 				22C7DB042DDB979E00225FAB /* SportsApp.xcdatamodeld in Sources */,
 				228B43892DD60098006C9EB1 /* AppDelegate.swift in Sources */,

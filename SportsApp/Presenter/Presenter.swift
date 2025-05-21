@@ -9,6 +9,7 @@ import Foundation
 
 class Presenter{
     
+    var leaguesDao = LeaguesDAO()
     var network:NetworkService
     var leaguesVC: LeaguesTableViewController?
 
@@ -87,10 +88,11 @@ class Presenter{
             for i in data!{
                 players.append(factory.createPlayer(object: i))
              }
-            for i in players{
-                print(i.name)
-            }
         })
+    }
+    
+    func saveLeagueToFavorites(league: League) {
+        leaguesDao.saveLeagueToFavorites(league: league)
     }
     
 }
