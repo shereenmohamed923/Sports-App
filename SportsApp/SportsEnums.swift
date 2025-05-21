@@ -36,7 +36,7 @@ enum Endpoint {
     var data: String {
         switch self {
         case .league:
-            return "football"
+            return "/?met=Leagues"
         case .fixture:
             return "/?met=Fixtures"
         case .team:

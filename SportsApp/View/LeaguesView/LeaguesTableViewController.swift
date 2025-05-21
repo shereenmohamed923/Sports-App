@@ -19,7 +19,10 @@ class LeaguesTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "leaguesCell")
         
         presenter = Presenter(leaguesVC: self)
-        presenter?.fetchLeagues(sport: .football, factory: FootballFactory())
+        presenter?.fetchLeagues(sport: .cricket, factory: CricketFactory())
+        presenter?.fetchFixtures(sport: .tennis, factory: TennisFactory())
+        presenter?.fetchTeam(sport: .football, factory: FootballFactory())
+        presenter?.fetchPlayer(sport: .football, factory: FootballFactory())
     }
     
     func reload(){

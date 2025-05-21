@@ -14,7 +14,7 @@ protocol Fetchable{
 
 class NetworkService: Fetchable{
     func fetchData(sport: Sport, endpoint: Endpoint, addOn: String="", completion: @escaping ([[String : Any]]?, Error?) -> Void) {
-        var url = "https://apiv2.allsportsapi.com/"+sport.data+endpoint.data+addOn+"&APIkey="+api
+        let url = "https://apiv2.allsportsapi.com/"+sport.data+endpoint.data+"&APIkey="+api+addOn
         AF.request(url).responseJSON{ response in
             switch response.result {
                 case .success(let value):

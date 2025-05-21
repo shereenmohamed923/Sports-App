@@ -38,4 +38,59 @@ class Presenter{
         })
     }
     
+    func fetchFixtures(sport:Sport,factory:SportFactory){
+        network.fetchData(sport: sport, endpoint: .fixture,addOn: "&from=\(DateManger.getPreviousWeekDate())&to=\(DateManger.getNextWeekDate())", completion: {data, error in
+            var fixtures=[Fixture]()
+            if let error=error{
+//                DispatchQueue.main.async {
+//                        self.leaguesVC?.showError(message: error.localizedDescription)
+//                    }
+                    return
+            }
+            
+            for i in data!{
+                fixtures.append(factory.createFixture(object: i))
+             }
+            
+        })
+    }
+    
+    //teamId should change to be dynamically handled
+    func fetchTeam(sport:Sport,factory:SportFactory){
+        network.fetchData(sport: sport, endpoint: .team,addOn: "&teamId=96", completion: {data, error in
+            var teams=[Team]()
+            if let error=error{
+//                DispatchQueue.main.async {
+//                        self.leaguesVC?.showError(message: error.localizedDescription)
+//                    }
+                    return
+            }
+            
+            for i in data!{
+                teams.append(factory.createTeam(object: i))
+             }
+            
+        })
+    }
+    
+    //playerId should change to be dynamically handled
+    func fetchPlayer(sport:Sport,factory:SportFactory){
+        network.fetchData(sport: sport, endpoint: .player,addOn: "&playerId=103051168", completion: {data, error in
+            var players=[Player]()
+            if let error=error{
+//                DispatchQueue.main.async {
+//                        self.leaguesVC?.showError(message: error.localizedDescription)
+//                    }
+                    return
+            }
+            
+            for i in data!{
+                players.append(factory.createPlayer(object: i))
+             }
+            for i in players{
+                print(i.name)
+            }
+        })
+    }
+    
 }

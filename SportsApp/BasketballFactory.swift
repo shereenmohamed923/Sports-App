@@ -13,7 +13,7 @@ class BasketballFactory:SportFactory{
     }
     
     func createFixture(object: [String : Any]) -> Fixture {
-        return Fixture(date: object["event_date"] as? String, time: object["event_time"] as? String, home: object["event_home_team"] as? String, away: object["event_away_team"] as? String, homeImg: object["home_team_logo"] as? String, awayImg: object["away_team_logo"] as? String, result: object["event_final_result"] as? String)
+        return Fixture(date: object["event_date"] as? String, time: object["event_time"] as? String, home: object["event_home_team"] as? String, away: object["event_away_team"] as? String, homeImg: object["event_home_team_logo"] as? String, awayImg: object["event_away_team_logo"] as? String, result: object["event_final_result"] as? String)
     }
     
     func createTeam(object: [String : Any]) -> Team {
@@ -21,7 +21,7 @@ class BasketballFactory:SportFactory{
     }
     
     internal func createPlayer(object: [String : Any]) -> Player {
-        return Player(name: object["player_name"] as? String, number: ["player_number"] as? String, image: object["player_image"] as? String, pos: object["player_type"] as? String)
+        return Player(name: object["team_name"] as? String, number: nil, image: object["team_logo"] as? String, pos: nil)
     }
     
     
