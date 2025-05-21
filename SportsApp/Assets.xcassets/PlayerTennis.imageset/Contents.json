@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "104-1045310_level-benefits-tennis-men-player-png-clipart.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
