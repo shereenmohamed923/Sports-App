@@ -8,13 +8,13 @@
 import Foundation
 
 class Team{
-    let key:String?
+    let key:Int?
     let name:String?
     let img:String?
     var players:[Player]?
     let coach:String?
     
-    init(key: String?, name: String?, img: String?, players: [Player]?, coach: String?) {
+    init(key: Int?, name: String?, img: String?, players: [Player]?, coach: String?) {
         self.key = key
         self.name = name
         self.img = img

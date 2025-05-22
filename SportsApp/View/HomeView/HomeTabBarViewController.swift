@@ -16,8 +16,8 @@ class HomeTabBarViewController: UITabBarController {
         }
 
         private func setupTabBar() {
-            let sportsVC = SportsViewController(nibName: "SportsViewController", bundle: nil)
-            let favoritesVC = FavoritesTableViewController(nibName: "LeaguesTableViewController", bundle: nil)
+            let sportsVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+            let favoritesVC = LeaguesTableViewController(nibName: "LeaguesTableViewController", bundle: nil)
 
             sportsVC.tabBarItem = UITabBarItem(title: "Sports", image: UIImage(systemName: "house.fill"), tag: 0)
             favoritesVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart.fill"), tag: 1)

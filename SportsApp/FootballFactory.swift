@@ -9,7 +9,7 @@ import Foundation
 
 class FootballFactory:SportFactory{
     func createLeague(object: [String : Any]) -> League {
-        return League(key: object["league_key"] as? Int, name: object["league_name"] as? String, img: object["league_logo"] as? String)
+        return League(key: (object["league_key"] as? Int), name: object["league_name"] as? String, img: object["league_logo"] as? String)
     }
     
     func createFixture(object: [String : Any]) -> Fixture {
@@ -17,20 +17,21 @@ class FootballFactory:SportFactory{
     }
     
     func createTeam(object: [String : Any]) -> Team {
-        let coach=((object["coaches"] as? [[String: Any]])?[0])
+        let coaches=(object["coaches"] as? [[String: Any]])
+        let coach = (coaches != nil && (!(coaches?.isEmpty ?? false))) ? coaches?[0] : ["coach_name":""]
         if let playersObj=object["players"] as? [[String: Any]]{
             var players:[Player]=[]
             for i in playersObj {
                 players.append(createPlayer(object: i))
             }
-            return Team(key: object["team_key"] as? String, name: object["team_name"] as? String, img: object["team_logo"] as? String, players: players, coach: coach?["coach_name"] as? String)
+            return Team(key: object["team_key"] as? Int, name: object["team_name"] as? String, img: object["team_logo"] as? String, players: players, coach: coach?["coach_name"] as? String)
         }
         
-        return Team(key: object["team_key"] as? String, name: object["team_name"] as? String, img: object["team_logo"] as? String, players: nil, coach: nil)
+        return Team(key: object["team_key"] as? Int, name: object["team_name"] as? String, img: object["team_logo"] as? String, players: nil, coach: nil)
     }
     
     internal func createPlayer(object: [String : Any]) -> Player {
-        return Player(name: object["player_name"] as? String, number: ["player_number"] as? String, image: object["player_image"] as? String, pos: object["player_type"] as? String)
+        return Player(name: object["player_name"] as? String, number: ["player_number"] as? Int, image: object["player_image"] as? String, pos: object["player_type"] as? String)
     }
     
     

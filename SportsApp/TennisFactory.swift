@@ -17,7 +17,7 @@ class TennisFactory:SportFactory{
     }
     
     func createTeam(object: [String : Any]) -> Team {
-        return Team(key: object["player_key"] as? String, name: object["player_name"] as? String, img: object["player_logo"] as? String, players: nil, coach: nil)
+        return Team(key: object["player_key"] as? Int, name: object["player_name"] as? String, img: object["player_logo"] as? String, players: nil, coach: nil)
     }
     
     internal func createPlayer(object: [String : Any]) -> Player {
