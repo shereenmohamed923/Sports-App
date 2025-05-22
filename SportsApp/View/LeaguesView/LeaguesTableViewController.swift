@@ -40,9 +40,6 @@ class LeaguesTableViewController: UITableViewController, DataHandling {
         presenter?.fetchLeagues(sport: sport!, factory: factory!)
     }
     
-    func reload(){
-        
-    }
     
     func showError(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)

@@ -9,6 +9,7 @@ import Foundation
 
 class Presenter{
     
+    var leaguesDao = LeaguesDAO()
     var network:NetworkService
     var dataHandle: DataHandling
 
@@ -63,6 +64,10 @@ class Presenter{
             let data=["teams":teams]
             self.dataHandle.getData(data:data)
         })
+    }
+    
+    func saveLeagueToFavorites(league: League) {
+        leaguesDao.saveLeagueToFavorites(league: league)
     }
     
 }

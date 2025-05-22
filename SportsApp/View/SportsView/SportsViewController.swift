@@ -1,5 +1,5 @@
 //
-//  FavoritesViewController.swift
+//  HomeViewController.swift
 //  SportsApp
 //
 //  Created by Macos on 19/05/2025.
@@ -7,8 +7,15 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class SportsViewController: UIViewController {
 
+    @IBAction func gotoLeagues(_ sender: Any) {
+        let leaguesVC = LeaguesTableViewController()
+
+        if let navigationController = self.navigationController {
+            navigationController.setViewControllers([leaguesVC], animated: true)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

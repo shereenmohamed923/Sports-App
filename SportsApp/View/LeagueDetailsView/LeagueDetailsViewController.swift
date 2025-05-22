@@ -131,7 +131,7 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                     cell.team2Text.text="Team 2"
                 }
                 if let result=fix.result{
-                    let r=result.isEmpty ? ["-","-"] : result.split(separator: "-")
+                    let r=result.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "").isEmpty ? ["-","-"] : result.split(separator: "-")
                     cell.team1Result.text = r[0].lowercased()
                     cell.team2Result.text = r[1].lowercased().replacingOccurrences(of: " ", with: "")
                 }
