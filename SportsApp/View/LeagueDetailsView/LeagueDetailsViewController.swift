@@ -109,14 +109,14 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                 cell.date.text=fix.date
                 cell.time.text=fix.time
                 if let imageUrl1 = fix.homeImg {
-                    cell.team1Img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: "team"))
+                    cell.team1Img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: sport == .tennis ? "tennisPlayer" : "team"))
                 } else {
-                    cell.team1Img.image = UIImage(named: "team")
+                    cell.team1Img.image = UIImage(named: sport == .tennis ? "tennisPlayer" : "team")
                 }
                 if let imageUrl2 = fix.awayImg {
-                    cell.team2Img.sd_setImage(with: URL(string: imageUrl2), placeholderImage: UIImage(named: "team"))
+                    cell.team2Img.sd_setImage(with: URL(string: imageUrl2), placeholderImage: UIImage(named:sport == .tennis ? "tennisPlayer" : "team"))
                 } else {
-                    cell.team2Img.image = UIImage(named: "team")
+                    cell.team2Img.image = UIImage(named: sport == .tennis ? "tennisPlayer" : "team")
                 }
                 if let home = fix.home{
                     cell.team1Text.text=home
@@ -149,14 +149,14 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                 cell.date.text=fix.date
                 cell.time.text=fix.time
                 if let imageUrl1 = fix.homeImg {
-                    cell.team1Img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: "team"))
+                    cell.team1Img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: sport == .tennis ? "tennisPlayer" : "team"))
                 } else {
-                    cell.team1Img.image = UIImage(named: "team")
+                    cell.team1Img.image = UIImage(named: sport == .tennis ? "tennisPlayer" : "team")
                 }
                 if let imageUrl2 = fix.awayImg {
-                    cell.team2Img.sd_setImage(with: URL(string: imageUrl2), placeholderImage: UIImage(named: "team"))
+                    cell.team2Img.sd_setImage(with: URL(string: imageUrl2), placeholderImage: UIImage(named: sport == .tennis ? "tennisPlayer" : "team"))
                 } else {
-                    cell.team2Img.image = UIImage(named: "team")
+                    cell.team2Img.image = UIImage(named: sport == .tennis ? "tennisPlayer" : "team")
                 }
                 if let home = fix.home{
                     cell.team1Text.text=home
@@ -178,9 +178,9 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamViewCell
                 let team = teams[indexPath.row]
                 if let imageUrl1 = team.img {
-                    cell.img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: "team"))
+                    cell.img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: sport == .tennis ? "tennisPlayer" : "team"))
                 } else {
-                    cell.img.image = UIImage(named: "team")
+                    cell.img.image = UIImage(named: sport == .tennis ? "tennisPlayer" : "team")
                 }
                 cell.team.text=team.name
                 cell.backgroundColor = .systemGray6
@@ -323,7 +323,7 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
             case 1:
                 label.text = "Upcoming Matches"
             case 2:
-                label.text = "Teams"
+                label.text = sport == .tennis ? "Players" : "Teams"
             default:
                 label.text = "Section \(indexPath.section)"
             }
