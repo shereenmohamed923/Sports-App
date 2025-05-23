@@ -264,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				22C7DB0D2DDB988B00225FAB /* NetworkService.swift */,
-				221498902DE1143B00E93788 /* NetworkMonitor.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -272,6 +271,7 @@
 		223C51F22DDCE34000E4E7CE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				221498902DE1143B00E93788 /* NetworkMonitor.swift */,
 				223C51F32DDCE36500E4E7CE /* DateUtility.swift */,
 			);
 			path = Utilities;
