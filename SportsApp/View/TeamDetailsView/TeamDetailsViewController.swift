@@ -23,7 +23,7 @@ class TeamDetailsViewController: UIViewController, UICollectionViewDataSource, U
     override func viewWillAppear(_ animated: Bool) {
         persenter=Presenter(dataHandle: self)
         if let teamKey=teamKey{
-            persenter?.fetchTeam(sport: sport!, factory: factory!, addOn: "&teamId=\(teamKey)")
+            persenter?.fetchTeam(sport: sport!, factory: factory!, addOn: "\(sport == .tennis ? "&playerId=" : "&teamId=")\(teamKey)")
         }
     }
     
