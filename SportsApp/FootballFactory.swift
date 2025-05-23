@@ -31,7 +31,8 @@ class FootballFactory:SportFactory{
     }
     
     internal func createPlayer(object: [String : Any]) -> Player {
-        return Player(name: object["player_name"] as? String, number: ["player_number"] as? Int, image: object["player_image"] as? String, pos: object["player_type"] as? String)
+
+        return Player(name: object["player_name"] as? String, number: object["player_number"] as? String, image: object["player_image"] as? String, pos: object["player_type"] as? String)
     }
     
     
