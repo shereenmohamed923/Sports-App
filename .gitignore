@@ -3,3 +3,4 @@
 *.xcuserstate
 xcuserdata/
 SportsApp.xcodeproj/xcuserdata/
+*.json
