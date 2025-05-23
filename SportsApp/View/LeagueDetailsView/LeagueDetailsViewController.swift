@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource, DataHandling {
+class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, DataHandling {
     
     func getData(data: [String : Any]) {
         if let fixtures = data["fixtures"] as? [Fixture]{
@@ -68,6 +68,7 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
 
         collectionView.collectionViewLayout = createLayout()
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         persenter=Presenter(dataHandle: self)
         if let leagueId=leagueId{
@@ -265,8 +266,8 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                 return section
 
             case 2:
-                let itemWidth = screenWidth * 0.4
-                let itemHeight = 120.0
+                let itemWidth = screenWidth * 0.45
+                let itemHeight = 150.0
 
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .absolute(itemWidth),
@@ -340,6 +341,16 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
         }
 
         return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            let teamVc = TeamDetailsViewController()
+            teamVc.teamKey = teams[indexPath.row].key
+            teamVc.sport = self.sport
+            teamVc.factory = self.factory
+            navigationController?.pushViewController(teamVc, animated: true)
+        }
     }
     
     

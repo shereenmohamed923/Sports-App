@@ -23,12 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let splashVC = SplashViewController(nibName: "SplashViewController", bundle: nil)
             
             let navigationController = UINavigationController(rootViewController: splashVC)
+        
+            UINavigationBar.appearance().tintColor = UIColor.red
             
             window.rootViewController = navigationController
             window.makeKeyAndVisible()
-        
-            navigationController.setNavigationBarHidden(true, animated: false)
-            
+                    
             self.window = window
         
     }
