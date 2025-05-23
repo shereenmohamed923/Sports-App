@@ -10,46 +10,14 @@ import SDWebImage
 
 class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, DataHandling {
     
-    func getData(data: [String : Any]) {
-        if let fixtures = data["fixtures"] as? [Fixture]{
-            for i in fixtures{
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd"
-                formatter.timeZone = .current
-                formatter.locale = .current
-
-                if let givenDate = formatter.date(from: i.date ?? "2020-01-01") {
-                    let today = Calendar.current.startOfDay(for: Date())
-                    let given = Calendar.current.startOfDay(for: givenDate)
-                    if(given>today){
-                        upcoimgFixture.append(i)
-                    }
-                    else{
-                        lastestFixture.append(i)
-                    }
-                }
-            }
-        }
-        
-        if let team = data["teams"] as? [Team] {
-            teams=team
-        }
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-    }
-    
-    func showError(error: Error) {
-        print(error.localizedDescription)
-    }
-    
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var sport:Sport?
     var factory:SportFactory?
     private var persenter:Presenter?
-    var leagueId:Int?
+    private var isFav=false
+    private let customButton = UIButton(type: .system)
+    var league:League?
     private var lastestFixture=[Fixture]()
     private var upcoimgFixture=[Fixture]()
     private var teams=[Team]()
@@ -71,12 +39,12 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
         collectionView.delegate = self
         
         persenter=Presenter(dataHandle: self)
-        if let leagueId=leagueId{
-            persenter?.fetchFixtures(sport: sport!, factory: factory!, addOn: "&leagueId=\(leagueId)")
-            persenter?.fetchTeam(sport: sport!, factory: factory!, addOn: "&leagueId=\(leagueId)")
+        if let id=league?.key{
+            persenter?.fetchFixtures(sport: sport!, factory: factory!, addOn: "&leagueId=\(id)")
+            persenter?.fetchTeam(sport: sport!, factory: factory!, addOn: "&leagueId=\(id)")
         }
         
-        
+        checkIfFound()
         collectionView.register(UINib(nibName: "LastestViewCell", bundle: nil), forCellWithReuseIdentifier: "lastestCell")
         collectionView.register(UINib(nibName: "UpcomingViewCell", bundle: nil), forCellWithReuseIdentifier: "upcomingCell")
         collectionView.register(UINib(nibName: "TeamViewCell", bundle: nil), forCellWithReuseIdentifier: "teamCell")
@@ -110,14 +78,14 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                 cell.date.text=fix.date
                 cell.time.text=fix.time
                 if let imageUrl1 = fix.homeImg {
-                    cell.team1Img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: "team"))
+                    cell.team1Img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: sport == .tennis ? "tennisPlayer" : "team"))
                 } else {
-                    cell.team1Img.image = UIImage(named: "team")
+                    cell.team1Img.image = UIImage(named: sport == .tennis ? "tennisPlayer" : "team")
                 }
                 if let imageUrl2 = fix.awayImg {
-                    cell.team2Img.sd_setImage(with: URL(string: imageUrl2), placeholderImage: UIImage(named: "team"))
+                    cell.team2Img.sd_setImage(with: URL(string: imageUrl2), placeholderImage: UIImage(named:sport == .tennis ? "tennisPlayer" : "team"))
                 } else {
-                    cell.team2Img.image = UIImage(named: "team")
+                    cell.team2Img.image = UIImage(named: sport == .tennis ? "tennisPlayer" : "team")
                 }
                 if let home = fix.home{
                     cell.team1Text.text=home
@@ -132,7 +100,7 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                     cell.team2Text.text="Team 2"
                 }
                 if let result=fix.result{
-                    let r=result.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "").isEmpty ? ["-","-"] : result.split(separator: "-")
+                    let r=getResluts(result: result)
                     cell.team1Result.text = r[0].lowercased()
                     cell.team2Result.text = r[1].lowercased().replacingOccurrences(of: " ", with: "")
                 }
@@ -150,14 +118,14 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                 cell.date.text=fix.date
                 cell.time.text=fix.time
                 if let imageUrl1 = fix.homeImg {
-                    cell.team1Img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: "team"))
+                    cell.team1Img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: sport == .tennis ? "tennisPlayer" : "team"))
                 } else {
-                    cell.team1Img.image = UIImage(named: "team")
+                    cell.team1Img.image = UIImage(named: sport == .tennis ? "tennisPlayer" : "team")
                 }
                 if let imageUrl2 = fix.awayImg {
-                    cell.team2Img.sd_setImage(with: URL(string: imageUrl2), placeholderImage: UIImage(named: "team"))
+                    cell.team2Img.sd_setImage(with: URL(string: imageUrl2), placeholderImage: UIImage(named: sport == .tennis ? "tennisPlayer" : "team"))
                 } else {
-                    cell.team2Img.image = UIImage(named: "team")
+                    cell.team2Img.image = UIImage(named: sport == .tennis ? "tennisPlayer" : "team")
                 }
                 if let home = fix.home{
                     cell.team1Text.text=home
@@ -179,9 +147,9 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamViewCell
                 let team = teams[indexPath.row]
                 if let imageUrl1 = team.img {
-                    cell.img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: "team"))
+                    cell.img.sd_setImage(with: URL(string: imageUrl1), placeholderImage: UIImage(named: sport == .tennis ? "tennisPlayer" : "team"))
                 } else {
-                    cell.img.image = UIImage(named: "team")
+                    cell.img.image = UIImage(named: sport == .tennis ? "tennisPlayer" : "team")
                 }
                 cell.team.text=team.name
                 cell.backgroundColor = .systemGray6
@@ -267,7 +235,7 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
 
             case 2:
                 let itemWidth = screenWidth * 0.45
-                let itemHeight = 150.0
+                let itemHeight = 120.0
 
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .absolute(itemWidth),
@@ -320,11 +288,27 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
 
             switch indexPath.section {
             case 0:
-                label.text = "Latest Matches"
+                if(lastestFixture.isEmpty){
+                    label.text="Latest Matches\n\nNo Latest Matches Avalaible"
+                    label.numberOfLines=3
+                }
+                else{
+                    label.text = "Latest Matches"
+                }
             case 1:
-                label.text = "Upcoming Matches"
+                if(upcoimgFixture.isEmpty){
+                    label.text="Upcoming Matches\n\nNo Upcoming Matches Avalaible"
+                    label.numberOfLines=3
+                }
+                else{
+                    label.text = "Upcoming Matches"
+                }
             case 2:
-                label.text = "Teams"
+                label.text = sport == .tennis ? "Players" : "Teams"
+                if(teams.isEmpty){
+                    label.text = (label.text ?? "") + "\n\n No " + (label.text ?? "") + "Avalaible"
+                }
+                label.numberOfLines=3
             default:
                 label.text = "Section \(indexPath.section)"
             }
@@ -343,6 +327,16 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
         return UICollectionReusableView()
     }
     
+    func getResluts(result: String) -> [Substring]{
+        if result.contains("/"){
+            return result.replacingOccurrences(of: "/", with: "").isEmpty ? ["-","-"] : result.split(separator: "/")
+        }
+        else if result.contains("-"){
+            return result.replacingOccurrences(of: "-", with: "").isEmpty ? ["-","-"] : result.split(separator: "-")
+        }
+        return ["-","-"]
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 2 {
             let teamVc = TeamDetailsViewController()
@@ -353,8 +347,88 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
         }
     }
     
+    func addButton(shape:String){
+        customButton.setImage(UIImage(systemName: shape), for: .normal)
+        customButton.tintColor = .red
+        customButton.addTarget(self, action: #selector(favClick), for: .touchUpInside)
+        let barButtonItem = UIBarButtonItem(customView: customButton)
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
     
+    func getData(data: [String : Any]) {
+        if let fixtures = data["fixtures"] as? [Fixture]{
+            for i in fixtures{
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                formatter.timeZone = .current
+                formatter.locale = .current
 
+                if let givenDate = formatter.date(from: i.date ?? "2020-01-01") {
+                    let today = Calendar.current.startOfDay(for: Date())
+                    let given = Calendar.current.startOfDay(for: givenDate)
+                    if(given>today){
+                        upcoimgFixture.append(i)
+                    }
+                    else{
+                        lastestFixture.append(i)
+                    }
+                }
+            }
+        }
+        
+        if let team = data["teams"] as? [Team] {
+            teams=team
+        }
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func showError(error: Error) {
+        DispatchQueue.main.async {
+            self.showError(message: error.localizedDescription)
+        }
+    }
+    
+    func checkIfFound(){
+        let favs=persenter?.leaguesDao.fetchFavoriteLeagues()
+        if let favs=favs{
+            if(favs.contains(where: {$0.key==league?.key})){
+                isFav=true
+                addButton(shape: "heart.fill")
+            }
+            else{
+                isFav=false
+                addButton(shape: "heart")
+            }
+        }
+        else{
+            isFav=false
+            addButton(shape: "heart")
+        }
+    }
+    
+    func changeType(shape:String){
+        customButton.setImage(UIImage(systemName: shape), for: .normal)
+    }
+    
+    @objc func favClick(){
+        if(isFav){
+            persenter?.leaguesDao.deleteLeagueFromFavorites(key: league?.key ?? 0)
+            changeType(shape: "heart")
+        }
+        else{
+            persenter?.leaguesDao.saveLeagueToFavorites(league: league!)
+            changeType(shape: "heart.fill")
+        }
+        isFav = !isFav
+    }
+    
+    func showError(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .destructive))
+        present(alert, animated: true)
+    }
     /*
     // MARK: - Navigation
 

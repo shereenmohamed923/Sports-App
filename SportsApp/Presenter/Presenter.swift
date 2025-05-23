@@ -61,9 +61,6 @@ class Presenter{
             for i in data!{
                 teams.append(factory.createTeam(object: i))
             }
-            for i in teams{
-                print(i.name)
-            }
 
             let data=["teams":teams]
             self.dataHandle.getData(data:data)

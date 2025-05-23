@@ -42,7 +42,7 @@ class LeaguesTableViewController: UITableViewController, DataHandling {
     
     
     func showError(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "There is something wrong", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
@@ -79,7 +79,7 @@ class LeaguesTableViewController: UITableViewController, DataHandling {
         let detailsVC=LeagueDetailsViewController(nibName: "LeagueDetailsViewController", bundle: nil)
         detailsVC.factory=factory
         detailsVC.sport=sport
-        detailsVC.leagueId = leagues[indexPath.row].key
+        detailsVC.league = leagues[indexPath.row]
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 

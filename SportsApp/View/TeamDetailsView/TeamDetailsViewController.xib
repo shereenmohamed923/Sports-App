@@ -42,7 +42,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Gcn-Av-g5Y">
-                    <rect key="frame" x="0.0" y="283.00000000000006" width="393" height="531.33333333333348"/>
+                    <rect key="frame" x="0.0" y="259.00000000000006" width="393" height="531.33333333333348"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KYI-5y-CMc">
                         <size key="itemSize" width="128" height="128"/>
@@ -65,7 +65,7 @@
                 <constraint firstItem="gBA-YA-gz1" firstAttribute="height" secondItem="x6d-gK-yxt" secondAttribute="height" multiplier="0.4" id="RNC-7R-ESB"/>
                 <constraint firstItem="gBA-YA-gz1" firstAttribute="width" secondItem="x6d-gK-yxt" secondAttribute="width" multiplier="0.3" id="V0p-LL-PsS"/>
                 <constraint firstItem="1WY-5x-VnY" firstAttribute="height" secondItem="x6d-gK-yxt" secondAttribute="height" multiplier="0.2" id="WLd-Wb-8uh"/>
-                <constraint firstItem="Gcn-Av-g5Y" firstAttribute="top" secondItem="reR-hz-3gg" secondAttribute="bottom" constant="24" id="XSE-KS-UTV"/>
+                <constraint firstItem="Gcn-Av-g5Y" firstAttribute="top" secondItem="reR-hz-3gg" secondAttribute="bottom" id="XSE-KS-UTV"/>
                 <constraint firstItem="gBA-YA-gz1" firstAttribute="top" secondItem="x6d-gK-yxt" secondAttribute="top" constant="30" id="fvA-8g-qKN"/>
                 <constraint firstItem="Gcn-Av-g5Y" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="hFy-G4-Tnl"/>
                 <constraint firstItem="1WY-5x-VnY" firstAttribute="width" secondItem="x6d-gK-yxt" secondAttribute="width" multiplier="0.9" id="kxd-Jr-2je"/>
@@ -84,10 +84,10 @@
         <image name="background2" width="768" height="512"/>
         <image name="barcelona" width="150" height="150"/>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
