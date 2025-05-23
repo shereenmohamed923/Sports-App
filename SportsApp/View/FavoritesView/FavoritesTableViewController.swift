@@ -18,7 +18,11 @@ class FavoritesTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "leaguesCell")
         
         favoritePresenter = FavoritePresenter(favoritesVC: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         favoritePresenter?.fetchFavoriteLeagues()
+        reload()
     }
     
     func reload(){
@@ -72,7 +76,19 @@ class FavoritesTableViewController: UITableViewController {
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if NetworkMonitor.shared.isConnected==false{
+            showNoNetwork()
+        }
+    }
 
+    func showNoNetwork() {
+        let alert = UIAlertController(title: "Error", message: "There is no internet connection", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .destructive))
+        present(alert, animated: true)
+    }
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {

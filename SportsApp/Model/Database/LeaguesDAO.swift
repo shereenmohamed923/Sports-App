@@ -15,7 +15,7 @@ class LeaguesDAO {
         let entity = NSEntityDescription.insertNewObject(forEntityName: "LeagueEntity", into: context)
             entity.setValue(Int64(league.key!), forKey: "key")
             entity.setValue(league.name, forKey: "name")
-            entity.setValue(league.img, forKey: "img")
+            entity.setValue(league.img ?? "", forKey: "img")
             
             try? context.save()
     }
