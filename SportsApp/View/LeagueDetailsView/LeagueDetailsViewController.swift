@@ -131,7 +131,7 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                     cell.team2Text.text="Team 2"
                 }
                 if let result=fix.result{
-                    let r=result.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "").isEmpty ? ["-","-"] : result.split(separator: "-")
+                    let r=getResluts(result: result)
                     cell.team1Result.text = r[0].lowercased()
                     cell.team2Result.text = r[1].lowercased().replacingOccurrences(of: " ", with: "")
                 }
@@ -342,7 +342,15 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
         return UICollectionReusableView()
     }
     
-    
+    func getResluts(result: String) -> [Substring]{
+        if result.contains("/"){
+            return result.replacingOccurrences(of: "/", with: "").isEmpty ? ["-","-"] : result.split(separator: "/")
+        }
+        else if result.contains("-"){
+            return result.replacingOccurrences(of: "-", with: "").isEmpty ? ["-","-"] : result.split(separator: "-")
+        }
+        return ["-","-"]
+    }
 
     /*
     // MARK: - Navigation
