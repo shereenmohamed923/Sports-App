@@ -10,27 +10,51 @@ import XCTest
 
 final class SportsAppTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    func testFetchSuccess() {
+            let mock = FakeNetworkApi()
+            mock.mockData = [["league": "NBA", "teams": 32]]
+            mock.mockError = nil
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+            let expectation = self.expectation(description: "fetchData completes")
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+            mock.fetchData(sport: .basketball, endpoint: .league, addOn: "") { data, error in
+                XCTAssertNotNil(data)
+                XCTAssertNil(error)
+                XCTAssertEqual(data?.first?["league"] as? String, "NBA")
+                expectation.fulfill()
+            }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+            waitForExpectations(timeout: 1.0)
         }
-    }
+
+        func testFetchFailure() {
+            let mock = FakeNetworkApi()
+            mock.mockError = NSError(domain: "test", code: 1, userInfo: nil)
+            mock.shouldFail=true
+            let expectation = self.expectation(description: "fetchData fails")
+
+            mock.fetchData(sport: .football, endpoint: .league, addOn: "") { data, error in
+                XCTAssertNil(data)
+                XCTAssertNotNil(error)
+                expectation.fulfill()
+            }
+
+            waitForExpectations(timeout: 1.0)
+        }
+    
+    func testRealNetworkFetch() {
+            let networkService = NetworkService()
+            let expectation = self.expectation(description: "Fetch data from real API")
+
+            networkService.fetchData(sport: .basketball, endpoint: .league, addOn: "") { data, error in
+                XCTAssertNil(error, "Expected no error, got: \(String(describing: error))")
+                XCTAssertNotNil(data, "Expected data")
+                XCTAssertFalse(data!.isEmpty, "Expected non-empty data array")
+                expectation.fulfill()
+            }
+
+            waitForExpectations(timeout: 5.0, handler: nil)
+        }
+    
 
 }
