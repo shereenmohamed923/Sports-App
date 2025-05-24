@@ -19,7 +19,7 @@ class FavoritesTableViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "leaguesCell")
-        
+        NetworkMonitor.shared.isConnected
         favoritePresenter = FavoritePresenter(favoritesVC: self)
     }
     
