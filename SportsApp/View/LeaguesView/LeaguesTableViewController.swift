@@ -67,9 +67,9 @@ class LeaguesTableViewController: UITableViewController, DataHandling {
         
         cell.leageName.text = league.name
         if let imageUrl = league.img {
-            cell.leagueImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "league placeholder"))
+            cell.leagueImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "sports"))
         } else {
-            cell.leagueImage.image = UIImage(named: "league placeholder")
+            cell.leagueImage.image = UIImage(named: "sports")
         }
         
         return cell
@@ -80,6 +80,7 @@ class LeaguesTableViewController: UITableViewController, DataHandling {
         detailsVC.factory=factory
         detailsVC.sport=sport
         detailsVC.league = leagues[indexPath.row]
+        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 

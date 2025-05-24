@@ -235,14 +235,14 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
 
             case 2:
                 let itemWidth = screenWidth * 0.45
-                let itemHeight = 120.0
+                let itemHeight = 150.0
 
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .absolute(itemWidth),
                     heightDimension: .fractionalHeight(1.0)
                 )
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 6, bottom: 0, trailing: 6)
+                item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4)
 
                 let groupSize = NSCollectionLayoutSize(
                     widthDimension: .absolute(itemWidth),
@@ -251,8 +251,8 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
                 let section = NSCollectionLayoutSection(group: group)
-                section.orthogonalScrollingBehavior = .groupPagingCentered
-                section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
+                section.orthogonalScrollingBehavior = .continuous
+                section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 4, bottom: 10, trailing: 4)
                 let headerSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
                     heightDimension: .estimated(44)
@@ -282,31 +282,39 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
             header.subviews.forEach { $0.removeFromSuperview() }
 
             let label = UILabel()
+            let headerLabel = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.font = UIFont.boldSystemFont(ofSize: 20)
-            label.textColor = .label
+            headerLabel.translatesAutoresizingMaskIntoConstraints = false
+            label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+            label.textColor = UIColor.gray
+            headerLabel.font = UIFont.boldSystemFont(ofSize: 20)
+            headerLabel.textColor = .label
 
             switch indexPath.section {
             case 0:
                 if(lastestFixture.isEmpty){
-                    label.text="Latest Matches\n\nNo Latest Matches Avalaible"
+                    headerLabel.text = "Latest Matches"
+                    label.text="No Latest Matches Avalaible"
                     label.numberOfLines=3
                 }
                 else{
-                    label.text = "Latest Matches"
+                    headerLabel.text = "Latest Matches"
+                    label.text=""
                 }
             case 1:
                 if(upcoimgFixture.isEmpty){
-                    label.text="Upcoming Matches\n\nNo Upcoming Matches Avalaible"
+                    headerLabel.text = "Upcoming Matches"
+                    label.text="No Upcoming Matches Avalaible"
                     label.numberOfLines=3
                 }
                 else{
-                    label.text = "Upcoming Matches"
+                    headerLabel.text = "Upcoming Matches"
+                    label.text=""
                 }
             case 2:
-                label.text = sport == .tennis ? "Players" : "Teams"
+                headerLabel.text = sport == .tennis ? "Players" : "Teams"
                 if(teams.isEmpty){
-                    label.text = (label.text ?? "") + "\n\n No " + (label.text ?? "") + "Avalaible"
+                    label.text = "No " + (headerLabel.text ?? "") + " Avalaible"
                 }
                 label.numberOfLines=3
             default:
@@ -314,11 +322,16 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
             }
 
             header.addSubview(label)
+            header.addSubview(headerLabel)
             NSLayoutConstraint.activate([
-                label.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16),
+                label.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 32),
                 label.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -16),
-                label.topAnchor.constraint(equalTo: header.topAnchor, constant: 4),
-                label.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -4)
+                label.topAnchor.constraint(equalTo: header.topAnchor, constant: 64),
+                label.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -4),
+                headerLabel.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16),
+                headerLabel.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -16),
+                headerLabel.topAnchor.constraint(equalTo: header.topAnchor, constant: 4),
+                headerLabel.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -4)
             ])
             
             return header
@@ -386,7 +399,8 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
     
     func showError(error: Error) {
         DispatchQueue.main.async {
-            self.showError(message: error.localizedDescription)
+            //self.showError(message: error.localizedDescription)
+            print("message: \(error.localizedDescription)")
         }
     }
     

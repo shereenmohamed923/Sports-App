@@ -20,26 +20,26 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackBasket" translatesAutoresizingMaskIntoConstraints="NO" id="PRV-cL-LSJ">
                         <rect key="frame" x="0.0" y="60" width="220" height="128"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvo-BR-O8n">
-                        <rect key="frame" x="15" y="70" width="110" height="20.333333333333329"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvo-BR-O8n">
+                        <rect key="frame" x="15.999999999999993" y="70" width="114.33333333333331" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <color key="textColor" red="0.92156863209999995" green="0.92156857250000002" blue="0.92156857250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FS7-KT-oG2">
-                        <rect key="frame" x="140" y="70" width="65" height="108"/>
+                        <rect key="frame" x="130.33333333333334" y="70" width="73.666666666666657" height="108"/>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="FS7-KT-oG2" firstAttribute="trailing" secondItem="PRV-cL-LSJ" secondAttribute="trailing" constant="-15" id="CM0-xk-Weq"/>
+                <constraint firstItem="FS7-KT-oG2" firstAttribute="trailing" secondItem="PRV-cL-LSJ" secondAttribute="trailing" constant="-16" id="CM0-xk-Weq"/>
                 <constraint firstItem="PRV-cL-LSJ" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" id="FRG-Nv-XTM"/>
-                <constraint firstItem="FS7-KT-oG2" firstAttribute="leading" secondItem="yvo-BR-O8n" secondAttribute="trailing" constant="15" id="FbG-ks-kMJ"/>
+                <constraint firstItem="FS7-KT-oG2" firstAttribute="leading" secondItem="yvo-BR-O8n" secondAttribute="trailing" id="FbG-ks-kMJ"/>
                 <constraint firstItem="yvo-BR-O8n" firstAttribute="top" secondItem="PRV-cL-LSJ" secondAttribute="top" constant="10" id="K85-dK-gEv"/>
-                <constraint firstItem="yvo-BR-O8n" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" multiplier="0.5" id="MOy-r6-FxA"/>
+                <constraint firstItem="yvo-BR-O8n" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" multiplier="0.52" id="MOy-r6-FxA"/>
                 <constraint firstItem="PRV-cL-LSJ" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="1" id="Rc5-9A-5OP"/>
-                <constraint firstItem="yvo-BR-O8n" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="dcG-cf-LJc"/>
+                <constraint firstItem="yvo-BR-O8n" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="dcG-cf-LJc"/>
                 <constraint firstItem="PRV-cL-LSJ" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="ew4-Rk-lZz"/>
                 <constraint firstItem="PRV-cL-LSJ" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" constant="1" id="f45-FI-0xK"/>
                 <constraint firstItem="FS7-KT-oG2" firstAttribute="bottom" secondItem="PRV-cL-LSJ" secondAttribute="bottom" constant="-10" id="h6Z-tJ-KNr"/>
