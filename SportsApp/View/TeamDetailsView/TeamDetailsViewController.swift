@@ -50,7 +50,6 @@ class TeamDetailsViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func setupHeaderUI(){
-        print("team name: \(team?.name)")
         teamName.text = team?.name
         if let imageUrl = team?.img{
             teamLogo.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "team"))

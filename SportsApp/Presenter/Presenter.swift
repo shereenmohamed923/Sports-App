@@ -67,8 +67,8 @@ class Presenter{
         })
     }
     
-    func saveLeagueToFavorites(league: League) {
-        leaguesDao.saveLeagueToFavorites(league: league)
+    func saveLeagueToFavorites(league: League, sport: String) {
+        leaguesDao.saveLeagueToFavorites(league: league, sport: sport)
     }
     
 }

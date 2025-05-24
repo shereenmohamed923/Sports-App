@@ -418,7 +418,7 @@ class LeagueDetailsViewController: UIViewController, UICollectionViewDataSource,
             changeType(shape: "heart")
         }
         else{
-            persenter?.leaguesDao.saveLeagueToFavorites(league: league!)
+            persenter?.leaguesDao.saveLeagueToFavorites(league: league!, sport: sport!.data)
             changeType(shape: "heart.fill")
         }
         isFav = !isFav

@@ -9,8 +9,11 @@ import UIKit
 
 class FavoritesTableViewController: UITableViewController {
 
-    var leagues: [League] = []
+    var leagues: [FavoriteLeague] = []
     var favoritePresenter: FavoritePresenter?
+    var sport: Sport?
+
+    let items = [HomeSport(title: "Football", playerImg: "PlayerFoot", backgroundImg: "BackFoot", sport: .football, factory: FootballFactory()), HomeSport(title: "Cricket", playerImg: "PlayerCrick", backgroundImg: "BackCrick", sport: .cricket, factory: CricketFactory()),HomeSport(title: "Basketball", playerImg: "PlayerBasket", backgroundImg: "BackBasket", sport: .basketball, factory: BasketballFactory()), HomeSport(title: "Tennis", playerImg: "PlayerTennis", backgroundImg: "BackTennis", sport: .tennis, factory: TennisFactory()),]
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +83,28 @@ class FavoritesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if NetworkMonitor.shared.isConnected==false{
             showNoNetwork()
+        }else{
+            let detailsVC=LeagueDetailsViewController(nibName: "LeagueDetailsViewController", bundle: nil)
+            var index: Int?
+            switch leagues[indexPath.row].sport {
+            case "football":
+                index = 0
+            case "cricket":
+                index = 1
+            case "basketball":
+                index = 2
+            case "tennis":
+                index = 3
+            default:
+                return
+            }
+            let current=items[index!]
+            detailsVC.factory=current.factory
+            detailsVC.sport=current.sport
+            var favoriteLeague = leagues[indexPath.row]
+            var league = League(key: favoriteLeague.key, name: favoriteLeague.name, img: favoriteLeague.img)
+            detailsVC.league = league
+            navigationController?.pushViewController(detailsVC, animated: true)
         }
     }
 

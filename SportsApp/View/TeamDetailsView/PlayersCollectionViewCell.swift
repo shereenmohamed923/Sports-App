@@ -22,7 +22,6 @@ class PlayersCollectionViewCell: UICollectionViewCell {
         private func setupCellStyle() {
             contentView.layer.cornerRadius = 15
             contentView.layer.masksToBounds = true
-            // Optional: add shadow to cell itself (if desired)
             layer.cornerRadius = 15
             layer.shadowColor = UIColor.black.cgColor
             layer.shadowOpacity = 0.15
