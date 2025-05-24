@@ -59,7 +59,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource, UICollect
             let availableWidth = collectionView.bounds.width - totalSpacing
             let itemWidth = floor(availableWidth / itemsPerRow)
 
-            return CGSize(width: itemWidth, height: 200)
+            return CGSize(width: itemWidth, height: 120)
         }
 
         func collectionView(_ collectionView: UICollectionView,
