@@ -104,6 +104,7 @@ class FavoritesTableViewController: UITableViewController {
             var favoriteLeague = leagues[indexPath.row]
             var league = League(key: favoriteLeague.key, name: favoriteLeague.name, img: favoriteLeague.img)
             detailsVC.league = league
+            navigationController?.setNavigationBarHidden(false, animated: true)
             navigationController?.pushViewController(detailsVC, animated: true)
         }
     }
