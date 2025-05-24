@@ -12,6 +12,7 @@ class FavoritesTableViewController: UITableViewController {
     var leagues: [FavoriteLeague] = []
     var favoritePresenter: FavoritePresenter?
     var sport: Sport?
+    var networkMonitor=NetworkMonitor.shared
 
     let items = [HomeSport(title: "Football", playerImg: "PlayerFoot", backgroundImg: "BackFoot", sport: .football, factory: FootballFactory()), HomeSport(title: "Cricket", playerImg: "PlayerCrick", backgroundImg: "BackCrick", sport: .cricket, factory: CricketFactory()),HomeSport(title: "Basketball", playerImg: "PlayerBasket", backgroundImg: "BackBasket", sport: .basketball, factory: BasketballFactory()), HomeSport(title: "Tennis", playerImg: "PlayerTennis", backgroundImg: "BackTennis", sport: .tennis, factory: TennisFactory()),]
         
@@ -24,6 +25,7 @@ class FavoritesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         favoritePresenter?.fetchFavoriteLeagues()
+        networkMonitor=NetworkMonitor.shared
         reload()
     }
     
@@ -80,7 +82,7 @@ class FavoritesTableViewController: UITableViewController {
         }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if NetworkMonitor.shared.isConnected==false{
+        if networkMonitor.isConnected==false{
             showNoNetwork()
         }else{
             let detailsVC=LeagueDetailsViewController(nibName: "LeagueDetailsViewController", bundle: nil)
@@ -100,8 +102,8 @@ class FavoritesTableViewController: UITableViewController {
             let current=items[index!]
             detailsVC.factory=current.factory
             detailsVC.sport=current.sport
-            var favoriteLeague = leagues[indexPath.row]
-            var league = League(key: favoriteLeague.key, name: favoriteLeague.name, img: favoriteLeague.img)
+            let favoriteLeague = leagues[indexPath.row]
+            let league = League(key: favoriteLeague.key, name: favoriteLeague.name, img: favoriteLeague.img)
             detailsVC.league = league
             navigationController?.setNavigationBarHidden(false, animated: true)
             navigationController?.pushViewController(detailsVC, animated: true)

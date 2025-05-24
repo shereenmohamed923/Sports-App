@@ -45,6 +45,7 @@
 		228B43AF2DD6009B006C9EB1 /* SportsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B43AE2DD6009B006C9EB1 /* SportsAppUITestsLaunchTests.swift */; };
 		228D28F52DDFDCAB003C1540 /* PlayersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D28F32DDFDCAB003C1540 /* PlayersCollectionViewCell.swift */; };
 		228D28F62DDFDCAB003C1540 /* PlayersCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228D28F42DDFDCAB003C1540 /* PlayersCollectionViewCell.xib */; };
+		2290BFD12DE1E7AE0048BF32 /* FakeNetworkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290BFD02DE1E7AE0048BF32 /* FakeNetworkApi.swift */; };
 		22C7DAF52DDB966300225FAB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 22C7DAF42DDB966300225FAB /* Alamofire */; };
 		22C7DAF72DDB966300225FAB /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 22C7DAF62DDB966300225FAB /* AlamofireDynamic */; };
 		22C7DAFA2DDB967200225FAB /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 22C7DAF92DDB967200225FAB /* SDWebImage */; };
@@ -125,6 +126,7 @@
 		228B43AE2DD6009B006C9EB1 /* SportsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		228D28F32DDFDCAB003C1540 /* PlayersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersCollectionViewCell.swift; sourceTree = "<group>"; };
 		228D28F42DDFDCAB003C1540 /* PlayersCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayersCollectionViewCell.xib; sourceTree = "<group>"; };
+		2290BFD02DE1E7AE0048BF32 /* FakeNetworkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkApi.swift; sourceTree = "<group>"; };
 		22C7DB002DDB979E00225FAB /* SportsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SportsApp.xcdatamodel; sourceTree = "<group>"; };
 		22C7DB0D2DDB988B00225FAB /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		22C7DB0F2DDB98E000225FAB /* Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				228B43A22DD6009B006C9EB1 /* SportsAppTests.swift */,
+				2290BFD02DE1E7AE0048BF32 /* FakeNetworkApi.swift */,
 			);
 			path = SportsAppTests;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2290BFD12DE1E7AE0048BF32 /* FakeNetworkApi.swift in Sources */,
 				228B43A32DD6009B006C9EB1 /* SportsAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
